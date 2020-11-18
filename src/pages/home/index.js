@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Layout } from 'antd';
+import { Button, Layout } from 'antd';
 import './home.scss'
 import SiderLayout from '../SiderLayout'
 const { Header, Footer, Sider, Content } = Layout
 class Home extends Component {
+    state = {
+        collapsed: false, // 默认收缩状态是展开
+     }
     render() { 
         return (  
             <div className="p-home">
@@ -22,7 +25,10 @@ class Home extends Component {
                     <Layout style={{
                         marginLeft: 200
                     }}>
-                        <Header>头部</Header>
+                        <Header>
+                            <Button type="primary" onClick={this.goOpen}>收缩</Button>
+                            头部
+                        </Header>
                         <Content>
                             内容区域
                         </Content>
@@ -33,6 +39,11 @@ class Home extends Component {
                 </Layout>
             </div>
         );
+    }
+    goOpen = ()=> {
+        this.setState({
+            collapsed: !this.state.collapsed
+        })
     }
 }
 export default Home;

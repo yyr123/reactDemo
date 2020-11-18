@@ -15,12 +15,19 @@ import {
 
 class SiderLayout extends Component {
     render() { 
+        let newCollapsed = this.props.collapsed
+        console.log(newCollapsed, '父组件传过来的值')
+
         return (  
             <div>
-                <div className="logo"></div>
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+                <div className="logo">1212</div>
+                <Menu 
+                    theme="dark" 
+                    mode="inline" 
+                    defaultSelectedKeys={['4']}
+                    >
                     <Menu.Item key="1" icon={<UserOutlined />}>
-                    nav 1
+                    nav 1 
                     </Menu.Item>
                     <Menu.Item key="2" icon={<VideoCameraOutlined />}>
                     nav 2
