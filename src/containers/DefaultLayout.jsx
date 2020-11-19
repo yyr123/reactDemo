@@ -3,7 +3,7 @@ import { Layout} from 'antd';
 import '../styles/layout.scss'
 
 import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux' // 用于组件和redux进行联系
 
 import AppAside from './AppAside'
 import AppHeader from './AppHeader'
@@ -53,11 +53,12 @@ class DefaultLayout extends Component {
 
 }
 
+// 这里是把所有redux的东西拿出来  进去
 const stateToProp = state => ({
     menuToggle: state.menuToggle
 })
 
-// redux 状态请求
+// redux 状态请求   出来
 const dispatchToProp = dispatch => ({
     menuClick() {
         console.log('121212')
