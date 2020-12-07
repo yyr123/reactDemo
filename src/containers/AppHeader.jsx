@@ -31,12 +31,14 @@ const AppHeader = props => {
     return (
         <Header>
             <Row>
-                <Col span={8}>
+                {/* 左边的收缩按钮 */}
+                <Col span={12}>
                 <Button type="primary" onClick={menuClick}>
                     {React.createElement(menuToggle ? MenuUnfoldOutlined : MenuFoldOutlined)}
                 </Button>
                 </Col>
-                <Col span={8} offset={8}>
+                {/* 右边的个人设置 */}
+                <Col span={12} style={{textAlign: 'right'}}>
                 {/* https://blog.csdn.net/qq_38054239/article/details/80845697 */}
                 {/* Dropdown 组件内部最外层只能接受一个元素 必须加一个span，不能直接是文本 */}
                     <Dropdown overlay={menu}>

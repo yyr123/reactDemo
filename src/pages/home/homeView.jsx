@@ -14,7 +14,6 @@ const { Footer, Content, } = Layout
 class DefaultLayout extends Component {
     state = {
         collapsed: false, // 默认收缩状态是展开
-        // leftPx: 200,
      }
     render() { 
         let {menuClick, menuToggle} = this.props
@@ -32,10 +31,13 @@ class DefaultLayout extends Component {
                             loginOut={this.loginOut}
                         />
                         <Content>
-                            内容区域
+                        <ul className="my-list">
+                            <li>{true?'JSPang.com':'1212'}</li>
+                            <li>I love React</li>
+                        </ul>
+
                         </Content>
                         <Footer>
-                            公共底部
                         </Footer>
                     </Layout>
                 </Layout>
@@ -43,7 +45,14 @@ class DefaultLayout extends Component {
         );
     }
     loginOut() {
+    //  this.props.history.push('/')
+
+    //  this.props.history.push('/login')
+
      console.log('开始退户')   
+    }
+    inputChange(val) {
+        console.log(val, '开始点击')
     }
 
     // 下拉菜单点击

@@ -21,6 +21,9 @@ class Login extends Component {
         } 
         const onFinish = (values) => {
             console.log('Success:', values);
+            // 跳转到首页
+            this.props.history.push('./')
+
             // 成功之后这里请求接口
             // this.props.history.push('./containers')
         };

@@ -9,6 +9,7 @@ const { Sider} = Layout
 const AppAside = props => {
     let { menuToggle } = props 
     return (
+        // 收缩按钮放在最外边 而不是放在menu里面
         <Sider
             collapsed={menuToggle}
             style={{
