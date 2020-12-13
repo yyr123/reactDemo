@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux' // 用于组件和redux进行联系
 
 import AppAside from '../../containers/AppAside'
+import TodoList from '../../containers/todoList'
 import AppHeader from '../../containers/AppHeader'
 import { menuToggleAction } from '../../store/actionCreators' // 引入redux 状态管理
  
@@ -31,11 +32,7 @@ class DefaultLayout extends Component {
                             loginOut={this.loginOut}
                         />
                         <Content>
-                        <ul className="my-list">
-                            <li>{true?'JSPang.com':'1212'}</li>
-                            <li>I love React</li>
-                        </ul>
-
+                             <TodoList></TodoList>
                         </Content>
                         <Footer>
                         </Footer>
@@ -46,7 +43,6 @@ class DefaultLayout extends Component {
     }
     loginOut() {
     //  this.props.history.push('/')
-
     //  this.props.history.push('/login')
 
      console.log('开始退户')   
@@ -70,7 +66,6 @@ const stateToProp = state => ({
 // redux 状态请求   出来
 const dispatchToProp = dispatch => ({
     menuClick() {
-        console.log('121212')
         // 点击事件触发收缩
         dispatch(menuToggleAction())
     }
