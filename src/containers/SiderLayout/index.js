@@ -1,17 +1,6 @@
 import React, { Component} from 'react';
 import { Menu } from 'antd'
 import './layout.scss'
-
-// import {
-//     AppstoreOutlined,
-//     BarChartOutlined,
-//     CloudOutlined,
-//     ShopOutlined,
-//     TeamOutlined,
-//     UserOutlined,
-//     UploadOutlined,
-//     VideoCameraOutlined,
-//   } from '@ant-design/icons';
 import MenuItem from 'antd/lib/menu/MenuItem';
 
 class SiderLayout extends Component {
@@ -28,6 +17,10 @@ class SiderLayout extends Component {
             {
                 name: '仓库管理',
                 index: 2
+            },
+            {
+                name: '订单处理',
+                index: 3
             }
         ], // 导航的列表
     }
@@ -45,7 +38,7 @@ class SiderLayout extends Component {
                     >
                         {
                             this.state.menuList.map((item, index) => {
-                                return <MenuItem key={item.index}>{item.name}</MenuItem>
+                                return <MenuItem key={item.index}>{item.name}{index}</MenuItem>
                             })
                         }
                         

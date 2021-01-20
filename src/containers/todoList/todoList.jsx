@@ -35,7 +35,6 @@ class TodoList extends Component {
     } else {
       message.info('请添加输入的数据')
     }
-   
   }
 
   // 删除当前

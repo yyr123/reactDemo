@@ -6,7 +6,8 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux' // 用于组件和redux进行联系
 
 import AppAside from '../../containers/AppAside'
-import TodoList from '../../containers/todoList'
+// import TodoList from '../../containers/todoList'
+import HomePage from '../../containers/homePage'
 import AppHeader from '../../containers/AppHeader'
 import { menuToggleAction } from '../../store/actionCreators' // 引入redux 状态管理
  
@@ -32,7 +33,8 @@ class DefaultLayout extends Component {
                             loginOut={this.loginOut}
                         />
                         <Content>
-                             <TodoList></TodoList>
+                            <HomePage></HomePage>
+                             {/* <TodoList></TodoList> */}
                         </Content>
                         <Footer>
                         </Footer>
