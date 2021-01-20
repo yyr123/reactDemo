@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Button } from 'antd'
+import { Input, Button, message } from 'antd'
 import './todoList.scss'
 
 
@@ -10,7 +10,6 @@ class TodoList extends Component {
     isFinish: false, // 是否完成
   }
   inputChange = (e) => {
-    console.log(this, e.target.value, '输入得到呵呵')
     this.setState({
       inputVal: e.target.value
     })
@@ -18,16 +17,25 @@ class TodoList extends Component {
 
   // 使用箭头函数
   addText = () => {
-    // 不能直接对state的数据进行处理
-    let newList = this.state.allList
-    newList.push(this.state.inputVal)
-    this.setState({
-      allList: newList,
-    }, () => {
-      this.setState({
-        inputVal: ''
+    if (this.state.inputVal) {
+      // 不能直接对state的数据进行处理
+      let newList = this.state.allList
+      newList.push({
+        name:this.state.inputVal,
+        status: 0, // 默认是未完成
       })
-    })
+
+      this.setState({
+        allList: newList,
+      }, () => {
+        this.setState({
+          inputVal: ''
+        })
+      })
+    } else {
+      message.info('请添加输入的数据')
+    }
+   
   }
 
   // 删除当前
@@ -38,23 +46,31 @@ class TodoList extends Component {
       allList: currentList
     })
   }
-  render() {
 
+  // 完成当前
+  completeTask = (index) => {
+    let finishList = this.state.allList
+    // 三元表达式
+    finishList[index].status === 1 ? finishList[index].status = 0 : finishList[index].status = 1 // 设置为已完成
+    this.setState({
+      allList: finishList
+    })
+  }
+  render() {
     return (
       <div style={{ margin: '20px' }}>
-        <p>这里是todolist</p>
+        <h1>TODOLIST</h1>
         <Input onInput={this.inputChange} value={this.state.inputVal} style={{ width: '200px', margin: '20px' }} placeholder="请输入" />
         <Button type="primary" onClick={this.addText}>开始添加</Button>
         <ul>
           {
             this.state.allList.map((item, index) => {
               return (
-                <li style={{ margin: '10px 20px' }} key={index}>
-                  <span onClick={() => {
-                    this.state.isFinish = !this.state.isFinish
-                  }} className={this.state.isFinish ? 'green' : 'red'}>{item}</span> 
+                <li className="liBox" key={index}>
+                  <Input type="checkbox" checked={item.status === 1} onChange={() => this.completeTask(index)}></Input>
+                  <span className={item.status === 1 ? 'green' : 'itemText'}>{item.name}</span> 
                   {/* 可使用箭头函数，进行参数的传递 */}
-                  <Button style={{ marginLeft: '10px' }} size='small' type='danger' onClick={() => this.deleteItem(index)}>删除当前的</Button>
+                  <Button className="deleteIcon" style={{ marginLeft: '10px' }} size='small' type='danger' onClick={() => this.deleteItem(index)}>删除当前的</Button>
                 </li>)
             })
           }

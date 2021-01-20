@@ -2,18 +2,35 @@ import React, { Component} from 'react';
 import { Menu } from 'antd'
 import './layout.scss'
 
-import {
-    AppstoreOutlined,
-    BarChartOutlined,
-    CloudOutlined,
-    ShopOutlined,
-    TeamOutlined,
-    UserOutlined,
-    UploadOutlined,
-    VideoCameraOutlined,
-  } from '@ant-design/icons';
+// import {
+//     AppstoreOutlined,
+//     BarChartOutlined,
+//     CloudOutlined,
+//     ShopOutlined,
+//     TeamOutlined,
+//     UserOutlined,
+//     UploadOutlined,
+//     VideoCameraOutlined,
+//   } from '@ant-design/icons';
+import MenuItem from 'antd/lib/menu/MenuItem';
 
 class SiderLayout extends Component {
+    state = {
+        menuList: [
+            {
+                name: '首页',
+                index: 0,
+            },
+            {
+                name: '订单管理',
+                index: 1,
+            },
+            {
+                name: '仓库管理',
+                index: 2
+            }
+        ], // 导航的列表
+    }
     render() { 
         let newCollapsed = this.props.collapsed
         console.log(newCollapsed, '父组件传过来的值')
@@ -26,7 +43,13 @@ class SiderLayout extends Component {
                     mode="inline" 
                     defaultSelectedKeys={['4']}
                     >
-                    <Menu.Item key="1" icon={<UserOutlined />}>
+                        {
+                            this.state.menuList.map((item, index) => {
+                                return <MenuItem key={item.index}>{item.name}</MenuItem>
+                            })
+                        }
+                        
+                    {/* <Menu.Item key="1" icon={<UserOutlined />}>
                     nav 1 
                     </Menu.Item>
                     <Menu.Item key="2" icon={<VideoCameraOutlined />}>
@@ -49,7 +72,7 @@ class SiderLayout extends Component {
                     </Menu.Item>
                     <Menu.Item key="8" icon={<ShopOutlined />}>
                     nav 8
-                    </Menu.Item>
+                    </Menu.Item> */}
                 </Menu>
             </div>
         );

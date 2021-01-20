@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Button, Select  } from 'antd'
+import { Form } from 'antd'
 
 class HomeView extends Component {
     state = {
@@ -19,3 +19,5 @@ class HomeView extends Component {
         )
     }
 }
+
+export default HomeView
